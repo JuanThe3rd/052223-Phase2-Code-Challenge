@@ -1,12 +1,22 @@
 import React from "react";
 
-function Transaction({details}) {
+function Transaction({transaction, bankAPI, removeTransaction}) {
+  function handleClick(){
+    fetch(`${bankAPI}/${transaction.id}`, {
+      method: "DELETE",
+    })
+      .then(resp => resp.json())
+      .then(() => {
+        removeTransaction(transaction);
+      })
+  }
+
   return (
     <tr>
-      <td>{details.date}</td>
-      <td>{details.description}</td>
-      <td>{details.category}</td>
-      <td>{details.amount}</td>
+      <td><button className="remove-btn" onClick={handleClick}>X</button>{transaction.date}</td>
+      <td>{transaction.description}</td>
+      <td>{transaction.category}</td>
+      <td>{transaction.amount}</td>
     </tr>
   );
 }

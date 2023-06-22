@@ -24,11 +24,17 @@ function AccountContainer() {
     setFilter(() => search)
   }
 
+  function onRemoveTransaction(deletedTransaction){
+    const updatedTransactions = transactions.filter((transaction) => transaction.id !== deletedTransaction.id);
+    setTransactions(updatedTransactions);
+  }
+
   const transactionsToDisplay = transactions.filter((transaction) => {
     if(filter === ""){
       return true;
     } else {
-      return (transaction.description.includes(filter))
+      const searchCheck = transaction.description.toUpperCase();
+      return (searchCheck.includes(filter.toUpperCase()))
     }
   })
 
@@ -36,7 +42,7 @@ function AccountContainer() {
     <div>
       <Search handleSearchChange={handleSearchChange}/>
       <AddTransactionForm bankAPI={bankAPI} addNewTransaction={addNewTransaction}/>
-      <TransactionsList transactions={transactionsToDisplay} />
+      <TransactionsList bankAPI={bankAPI} transactions={transactionsToDisplay} onRemoveTransaction={onRemoveTransaction}/>
     </div>
   );
 }
