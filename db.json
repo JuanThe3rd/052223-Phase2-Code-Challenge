@@ -83,6 +83,13 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2023-06-22",
+      "description": "McDonald's",
+      "category": "Food",
+      "amount": "-10.00",
+      "id": 13
     }
   ]
 }
