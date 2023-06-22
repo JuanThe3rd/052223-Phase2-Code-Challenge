@@ -21,7 +21,7 @@ function AccountContainer() {
   }
 
   function handleSearchChange(search){
-    setFilter(search)
+    setFilter(() => search)
   }
 
   const transactionsToDisplay = transactions.filter((transaction) => {

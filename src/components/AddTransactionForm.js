@@ -11,7 +11,7 @@ function AddTransactionForm({bankAPI, addNewTransaction}) {
         date: event.target.date.value,
         description: event.target.description.value,
         category: event.target.category.value,
-        amount: event.target.amount.value
+        amount: parseFloat(event.target.amount.value)
       })
     })
       .then(resp => resp.json())
